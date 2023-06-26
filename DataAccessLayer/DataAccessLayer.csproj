@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A920A697-5F6C-4EE6-9551-B3C21B1B899E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessLayer</RootNamespace>
+    <AssemblyName>DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ContentSQLiteInteropFiles>true</ContentSQLiteInteropFiles>
+    <CopySQLiteInteropFiles>false</CopySQLiteInteropFiles>
+    <CleanSQLiteInteropFiles>false</CleanSQLiteInteropFiles>
+    <CollectSQLiteInteropFiles>false</CollectSQLiteInteropFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite.Core">
+      <Version>1.0.117</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonBal.cs" />
+    <Compile Include="PostDal.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThreadSafetyTest.cs" />
+    <Compile Include="ThreadSafetyTest2.cs" />
+    <Compile Include="UserDal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{f8356256-8fea-451f-bbd6-3ed4a66746c8}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{c5dbab6f-110c-463e-b30e-e0f0f62b4fa9}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
